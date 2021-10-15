@@ -1,7 +1,9 @@
-import logo from './logo.svg';
+import logo from './assets/images/octocatFlavors.png';
 import './App.css';
+import trialFetch from './api/apis';
 
 function App() {
+  trialFetch();
   return (
     <div className="App">
       <header className="App-header">
