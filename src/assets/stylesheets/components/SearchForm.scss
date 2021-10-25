@@ -1,11 +1,18 @@
 .search_form {
   input {
+    height: 30px;
+    padding-left: 35px;
+  }
+
+  input.search_input {
     background-image: url('../../images/magnifier-tool.svg');
     background-size: 20px;
     background-position: 5px;
     background-repeat: no-repeat;
-    height: 30px;
-    padding-left: 35px;
   }
-  
+
+  button {
+    height: 35px;
+  }
+
 }

@@ -13,6 +13,7 @@ const SearchForm = () => {
     <>
       <form className="search_form" onSubmit={(e) => handleSubmit(e)}>
         <input
+          className="search_input"
           type="text"
           value={searchWord}
           placeholder="Search"
@@ -24,7 +25,7 @@ const SearchForm = () => {
           value={selectedLanguage}
           onChange={(e) => selectLanguage(e)}
         />
-        <input type="submit" value="Submit" />
+        <button type="submit" value="Submit">Submit</button>
       </form>
     </>
   );

@@ -1,10 +1,8 @@
 import logo from './assets/images/octocatFlavors.png';
 import './assets/stylesheets/App.scss';
-// import trialFetch from './api/apis';
 import SearchForm from './components/SearchForm';
 
 function App() {
-  // trialFetch();
   return (
     <div className="App">
       <header className="App-header">
