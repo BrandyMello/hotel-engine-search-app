@@ -1,12 +1,9 @@
-const trialFetch = async () => {
-  // const queryString =
-  //   "q=" + encodeURIComponent("GitHub Octocat in:readme user:defunkt");
-
+const getRepositories = async (query, language) => {
   fetch(
-    `https://api.github.com/search/code?${"q=document+in:file+language:js+user:neliojrr"}`
+    `https://api.github.com/search/repositories?q=${query}+language:${language ? language : ''}&sort=stars&order=desc`
   )
     .then((response) => response.json())
     .then((data) => console.log(data));
 };
 
-export default trialFetch;
+export default getRepositories;

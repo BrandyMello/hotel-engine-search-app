@@ -1,24 +1,16 @@
 import logo from './assets/images/octocatFlavors.png';
-import './App.css';
-import trialFetch from './api/apis';
+import './assets/stylesheets/App.scss';
+// import trialFetch from './api/apis';
+import SearchForm from './components/SearchForm';
 
 function App() {
-  trialFetch();
+  // trialFetch();
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Search Your Favorite Octocat Flavor</h1>
+        <SearchForm />
       </header>
     </div>
   );
