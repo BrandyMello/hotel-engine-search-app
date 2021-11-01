@@ -25,7 +25,7 @@ const SearchForm = () => {
           value={selectedLanguage}
           onChange={(e) => selectLanguage(e)}
         />
-        <button type="submit" value="Submit">Submit</button>
+        <button type="submit" value="Submit" disabled={searchWord.length < 1} >Submit</button>
       </form>
     </>
   );
