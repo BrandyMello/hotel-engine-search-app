@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import getRepositories from '../api/apis';
 
-const SearchForm = () => {
+const SearchForm = ({ handleSubmit }) => {
   const [searchWord, setSearchWord] = useState('');
   const [selectedLanguage, selectLanguage] = useState('');
-  console.log(searchWord);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    getRepositories(searchWord, selectedLanguage);
-  }
+
   return (
     <>
-      <form className="search_form" onSubmit={(e) => handleSubmit(e)}>
+      <form className="search_form" onSubmit={(e) => handleSubmit(e, searchWord, selectedLanguage)}>
         <input
           className="search_input"
           type="text"

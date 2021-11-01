@@ -1,9 +1,18 @@
-const getRepositories = async (query, language) => {
-  fetch(
-    `https://api.github.com/search/repositories?q=${query}+language:${language ? language : ''}&sort=stars&order=desc`
+const getRepositories = (query, language) => {
+  return fetch(
+    `https://api.github.com/search/repositories?q=${query}+language:${
+      language ? language : ""
+    }&sort=stars&order=desc`
   )
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((resp) => {
+      if (!resp.ok) {
+        throw Error("There was an error");
+      }
+      return resp.json();
+    })
+    .catch((err) => {
+      throw err;
+    });
 };
 
 export default getRepositories;
