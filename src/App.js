@@ -3,7 +3,7 @@ import getRepositories from "./api/apis";
 import logo from './assets/images/octocatFlavors.png';
 import './assets/stylesheets/App.scss';
 import SearchForm from './components/SearchForm';
-import SearchResultsDisplay from './components/RepoList';
+import RepoList from './components/RepoList';
 
 class App extends Component {
   constructor() {
@@ -21,6 +21,13 @@ class App extends Component {
         this.setState({ queryResults: data.items, searchWord: searchWord, selectedLanguage: selectedLanguage })}
       );
   };
+  clearSearch = () => {
+    this.setState({
+      queryResults: [],
+      searchWord: '',
+      selectedLanguage: '',
+    });
+  }
 
   render() {
     return (
@@ -28,8 +35,19 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1>Search Your Favorite Octocat Flavor</h1>
-          <SearchForm handleSubmit={this.handleSubmit} />
-          <SearchResultsDisplay queryData={{ queryResults: this.state.queryResults, searchWord: this.state.searchWord, selectedLanguage: this.state.selectedLanguage }} />
+          {this.state.queryResults.length < 1 && (
+            <SearchForm handleSubmit={this.handleSubmit} />
+          )}
+          {this.state.queryResults.length > 0 && (
+            <RepoList
+              clearSearch={this.clearSearch}
+              queryData={{
+                queryResults: this.state.queryResults,
+                searchWord: this.state.searchWord,
+                selectedLanguage: this.state.selectedLanguage,
+              }}
+            />
+          )}
         </header>
       </div>
     );
