@@ -18,7 +18,7 @@ const SearchForm = ({ handleSubmit }) => {
           type="text"
           placeholder="Filter by Language"
           value={selectedLanguage}
-          onChange={(e) => selectLanguage(e)}
+          onChange={(e) => selectLanguage(e.target.value)}
         />
         <button type="submit" value="Submit" disabled={searchWord.length < 1} >Submit</button>
       </form>

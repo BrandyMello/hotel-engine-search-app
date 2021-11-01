@@ -1,0 +1,13 @@
+.repo-list-container {
+  display: flex;
+  padding: 30px;
+  flex-wrap: wrap;
+}
+
+.repo-container {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #62CDFE;
+  margin: 20px auto;
+}
