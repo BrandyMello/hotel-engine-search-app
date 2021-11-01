@@ -1,4 +1,9 @@
 .search_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 200px;
+
   input {
     height: 30px;
     padding-left: 35px;
