@@ -78,6 +78,7 @@ class App extends Component {
                 queryResults={this.state.queryResults}
                 singleRepoId={this.state.singleRepoId}
                 showSingleRepo={this.state.showSingleRepo}
+                clearSearch={this.clearSearch}
               />
             )}
           />

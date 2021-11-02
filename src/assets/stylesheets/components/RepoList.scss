@@ -1,7 +1,10 @@
 .repo-list-component-container {
   margin-bottom: 30px;
+  color: white;
 }
-
+h2 {
+  padding: 0 20px;
+}
 .repo-list-container {
   display: flex;
   padding: 30px;
@@ -19,5 +22,8 @@
   p {
     margin-top: 20%;
     padding: 10px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
   }
 }
