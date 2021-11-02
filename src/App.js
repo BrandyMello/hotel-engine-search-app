@@ -46,26 +46,29 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Route path="/" render={() => (
-            <>
-              {this.state.queryResults.length < 1 && (
-                <SearchForm handleSubmit={this.handleSubmit} />
-              )}
-              {this.state.queryResults.length > 0 &&
-                !this.state.showSingleRepo && (
-                  <RepoList
-                    clearSearch={this.clearSearch}
-                    queryData={{
-                      queryResults: this.state.queryResults,
-                      searchWord: this.state.searchWord,
-                      selectedLanguage: this.state.selectedLanguage,
-                    }}
-                    getSingleRepoId={this.getSingleRepoId}
-                    toggleShowSingleRepo={this.toggleShowSingleRepo}
-                  />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <>
+                {this.state.queryResults.length < 1 && (
+                  <SearchForm handleSubmit={this.handleSubmit} />
                 )}
-            </>
-          )}
+                {this.state.queryResults.length > 0 &&
+                  !this.state.showSingleRepo && (
+                    <RepoList
+                      clearSearch={this.clearSearch}
+                      queryData={{
+                        queryResults: this.state.queryResults,
+                        searchWord: this.state.searchWord,
+                        selectedLanguage: this.state.selectedLanguage,
+                      }}
+                      getSingleRepoId={this.getSingleRepoId}
+                      toggleShowSingleRepo={this.toggleShowSingleRepo}
+                    />
+                  )}
+              </>
+            )}
           />
           <Route
             exact

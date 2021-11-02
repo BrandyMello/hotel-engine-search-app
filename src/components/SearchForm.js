@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 
 const SearchForm = ({ handleSubmit }) => {
+  const history = useHistory();
+  console.log(history);
   const [searchWord, setSearchWord] = useState('');
   const [selectedLanguage, selectLanguage] = useState('');
 
