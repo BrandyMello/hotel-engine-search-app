@@ -6,7 +6,11 @@ const SearchForm = ({ handleSubmit }) => {
 
   return (
     <>
-      <form className="search_form" onSubmit={(e) => handleSubmit(e, searchWord, selectedLanguage)}>
+      <h1>Search Your Favorite Octocat Flavor</h1>
+      <form
+        className="search_form"
+        onSubmit={(e) => handleSubmit(e, searchWord, selectedLanguage)}
+      >
         <input
           className="search_input"
           type="text"
@@ -20,7 +24,9 @@ const SearchForm = ({ handleSubmit }) => {
           value={selectedLanguage}
           onChange={(e) => selectLanguage(e.target.value)}
         />
-        <button type="submit" value="Submit" disabled={searchWord.length < 1} >Submit</button>
+        <button type="submit" value="Submit" disabled={searchWord.length < 1}>
+          Submit
+        </button>
       </form>
     </>
   );

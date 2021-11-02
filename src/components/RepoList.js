@@ -1,13 +1,19 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
-const SearchResultsDisplay = ({ queryData, clearSearch }) => {
+const RepoList = ({ queryData, clearSearch, getSingleRepoId, toggleShowSingleRepo }) => {
+  const history = useHistory();
   const { queryResults, searchWord, selectedLanguage } = queryData;
   const diaplayResults = queryResults.map((repo) => (
-    <div className={`repo-container`} key={repo.id}>
+    <button type="button" onClick={() => {
+      getSingleRepoId(repo.id);
+      toggleShowSingleRepo();
+      history.push(`/repo/${repo.id}`);
+      }} className={`repo-container`} key={repo.id}>
       <p>{repo.name}</p>
-    </div>
+    </button>
   ));
-
+  console.log(queryResults);
   return (
     <div className="repo-list-component-container">
       <h2>
@@ -22,4 +28,4 @@ const SearchResultsDisplay = ({ queryData, clearSearch }) => {
   );
 };
 
-export default SearchResultsDisplay;
+export default RepoList;

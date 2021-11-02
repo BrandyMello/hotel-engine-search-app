@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Route } from "react-router-dom";
 import getRepositories from "./api/apis";
 import logo from './assets/images/octocatFlavors.png';
 import './assets/stylesheets/App.scss';
 import SearchForm from './components/SearchForm';
 import RepoList from './components/RepoList';
+import Repo from './components/Repo';
+
 
 class App extends Component {
   constructor() {
@@ -11,13 +14,16 @@ class App extends Component {
     this.state = {
       queryResults: [],
       searchWord: '',
-      selectedLanguage: ''
+      selectedLanguage: '',
+      singleRepoId: null,
+      showSingleRepo: false
     };
   }
   handleSubmit = (e, searchWord, selectedLanguage) => {
     e.preventDefault();
     getRepositories(searchWord, selectedLanguage)
       .then((data) => {
+        console.log({data});
         this.setState({ queryResults: data.items, searchWord: searchWord, selectedLanguage: selectedLanguage })}
       );
   };
@@ -28,26 +34,50 @@ class App extends Component {
       selectedLanguage: '',
     });
   }
+  getSingleRepoId = (id) => {
+    this.setState({ singleRepoId: id });
+  }
+  toggleShowSingleRepo = () => {
+    this.setState({ showSingleRepo: !this.state.showSingleRepo });
+  }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1>Search Your Favorite Octocat Flavor</h1>
-          {this.state.queryResults.length < 1 && (
-            <SearchForm handleSubmit={this.handleSubmit} />
+          <Route path="/" render={() => (
+            <>
+              {this.state.queryResults.length < 1 && (
+                <SearchForm handleSubmit={this.handleSubmit} />
+              )}
+              {this.state.queryResults.length > 0 &&
+                !this.state.showSingleRepo && (
+                  <RepoList
+                    clearSearch={this.clearSearch}
+                    queryData={{
+                      queryResults: this.state.queryResults,
+                      searchWord: this.state.searchWord,
+                      selectedLanguage: this.state.selectedLanguage,
+                    }}
+                    getSingleRepoId={this.getSingleRepoId}
+                    toggleShowSingleRepo={this.toggleShowSingleRepo}
+                  />
+                )}
+            </>
           )}
-          {this.state.queryResults.length > 0 && (
-            <RepoList
-              clearSearch={this.clearSearch}
-              queryData={{
-                queryResults: this.state.queryResults,
-                searchWord: this.state.searchWord,
-                selectedLanguage: this.state.selectedLanguage,
-              }}
-            />
-          )}
+          />
+          <Route
+            exact
+            path="/repo/:id"
+            render={() => (
+              <Repo
+                queryResults={this.state.queryResults}
+                singleRepoId={this.state.singleRepoId}
+                showSingleRepo={this.state.showSingleRepo}
+              />
+            )}
+          />
         </header>
       </div>
     );
