@@ -1,3 +1,7 @@
+@import './components/SearchForm.scss';
+@import './components/RepoList.scss';
+@import './components/Repo.scss';
+
 .App {
   text-align: center;
 }
@@ -7,14 +11,8 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #4d525b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,11 +26,6 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  padding: 20px;
 }

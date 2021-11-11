@@ -1,0 +1,38 @@
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom'
+
+const SearchForm = ({ handleSubmit }) => {
+  const history = useHistory();
+  console.log(history);
+  const [searchWord, setSearchWord] = useState('');
+  const [selectedLanguage, selectLanguage] = useState('');
+
+  return (
+    <>
+      <h1>Search Your Favorite Octocat Flavor</h1>
+      <form
+        className="search_form"
+        onSubmit={(e) => handleSubmit(e, searchWord, selectedLanguage)}
+      >
+        <input
+          className="search_input"
+          type="text"
+          value={searchWord}
+          placeholder="Search"
+          onChange={(e) => setSearchWord(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Filter by Language"
+          value={selectedLanguage}
+          onChange={(e) => selectLanguage(e.target.value)}
+        />
+        <button type="submit" value="Submit" disabled={searchWord.length < 1}>
+          Submit
+        </button>
+      </form>
+    </>
+  );
+}
+
+export default SearchForm;
